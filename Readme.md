@@ -1,16 +1,8 @@
 # README
 
-## Run locally
-
-`make run/live`
-
-## Run docker image
-
-`sed 's/export //g' .envrc > .docker_env`
-`docker build --tag yosemite .`
-`docker run -p 4000:4000 --env-file ./.docker_env yosemite`
-
-## Installation fixes
-
-Find cairo installation folder: `pkg-config --cflags  -- cairo cairo`
-Copy cairo folder into <user>/go/pkg/mod/github.com/ungerik/go-cairo@v0.0.0-20210317133935-984b32e6bac6
+## To reproduce issue
+1. Sign up with supabase and create a project
+2. Replace database URL with project URL
+3. Run river migration
+4. Start app: `go run main.go`
+5. Go to supabase and run `SELECT * FROM pg_stat_activity where query  like '%river%' order by pid desc` to see the number of increasing connections caused by the river queue.

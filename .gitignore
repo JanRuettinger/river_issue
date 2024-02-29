@@ -1,0 +1,9 @@
+.envrc
+.DS_Store
+tmp/
+jsonDB/
+*.pdf
+.docker_env
+.envrc_prod
+.envrc_staging
+.vscode/
